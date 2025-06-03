@@ -6,7 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+const userRoutes = require('./v1/userRoutes');
+app.use('/api/v1/users', userRoutes);
 
 
 app.listen(3000, () => {
