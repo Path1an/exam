@@ -20,7 +20,7 @@ function AddUserForm() {
 
             if (response.ok) {
                 const result = await response.json();
-                setMessage("User:" + name + "added successfully!");
+                setMessage("User: " + name + " added successfully!");
             } else {
                 console.error('Failed to add user');
             }
