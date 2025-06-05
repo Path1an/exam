@@ -5,6 +5,8 @@ function EditUserForm() {
     const [name, setName] = useState('');
     const [office, setOffice] = useState('');
     const [date, setDate] = useState('');
+    const [status, setStatus] = useState('');
+    const [endDate, setEndDate] = useState('');;
     const [Message, setMessage] = useState('');
 
     const handleSubmit = async (event) => {
@@ -16,7 +18,7 @@ function EditUserForm() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({userName: name, userOffice: office, dateEmployed: date})
+                body: JSON.stringify({userName: name, userOffice: office, dateEmployed: date, userStatus: status, endDate: endDate})
             });
 
             if (response.ok) {
@@ -38,12 +40,21 @@ function EditUserForm() {
             <form onSubmit={handleSubmit}>
                 <label> User ID: </label>
                     <input type="number" value={userID} onChange={(e) => setUserID(e.target.value)} />
+
                 <label> Name: </label>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+
                 <label> Office: </label>
                     <input type="text" value={office} onChange={(e) => setOffice(e.target.value)} />
+
                 <label> Date Employed: </label>
                     <input type="number" value={date} onChange={(e) => setDate(e.target.value)} /> 
+                    
+                <label> Status: </label>
+                    <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
+
+                <label> End Date: </label>
+                    <input type="number" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
 
                 <button type="submit">Update User</button>
             </form>

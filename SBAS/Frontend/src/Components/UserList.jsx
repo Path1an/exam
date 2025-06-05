@@ -22,7 +22,7 @@ function UserList() {
             <h1>Employees</h1>
             <ul>
                 {user.map((user) => (
-                    <li key={user.userID}>  {user.userID} - {user.userName} - {user.userOffice} - Started Working: {user.dateEmployed}</li>
+                    <li key={user.userID}>  {user.userID} - {user.userName} - {user.userOffice} - Startet jobben: {user.dateEmployed} - Status: {user.userStatus} - Sluttet: {user.endDate} </li>
                 ))}
             </ul>
         </div>

@@ -30,8 +30,8 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
     try {
         const [resoult] = await pool.execute(
-            'INSERT INTO users (userName, userOffice, dateEmployed) VALUES (?, ?, ?)', 
-            [req.body.userName, req.body.userOffice, req.body.dateEmployed]
+            'INSERT INTO users (userName, userOffice, dateEmployed, userStatus, endDate) VALUES (?, ?, ?, ?, ?)', 
+            [req.body.userName, req.body.userOffice, req.body.dateEmployed, req.body.userStatus, req.body.endDate]
         );
         
         res.status(200).json({success: true, data: resoult});
@@ -47,8 +47,8 @@ const createUser = async (req, res) => {
 const updateUser = async(req, res) => {
     try {
         const [resoult] = await pool.execute(
-            'UPDATE users SET userName = ?, userOffice = ?, dateEmployed = ? WHERE userID = ?',
-            [ req.body.userName, req.body.userOffice, req.body.dateEmployed, req.params.id]);
+            'UPDATE users SET userName = ?, userOffice = ?, dateEmployed = ?, userStatus = ?, endDate = ? WHERE userID = ?',
+            [ req.body.userName, req.body.userOffice, req.body.dateEmployed, req.body.userStatus, req.body.endDate, req.params.id]);
 
         if (resoult.affectedRows === 0) {
             res.status(404).json({success: false, error: 'user not found'});

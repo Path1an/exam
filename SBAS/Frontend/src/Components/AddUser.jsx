@@ -4,6 +4,8 @@ function AddUserForm() {
     const [name, setName] = useState('');
     const [office, setOffice] = useState('');
     const [date, setDate] = useState('');
+    const [status, setStatus] = useState('');
+    const [endDate, setEndDate] = useState('');
     const [Message, setMessage] = useState('');
 
     const handleSubmit = async (event) => {
@@ -15,7 +17,7 @@ function AddUserForm() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ userName: name, userOffice: office, dateEmployed: date })
+                body: JSON.stringify({ userName: name, userOffice: office, dateEmployed: date, userStatus: status, endDate: endDate })
             });
 
             if (response.ok) {
@@ -52,6 +54,20 @@ function AddUserForm() {
                 type="number"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
+            />
+            <label htmlFor="user-status">Status:</label>
+            <input
+                id="user-status"
+                type="text"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+            />
+            <label htmlFor="end-date">End Date:</label>
+            <input
+                id="end-date"
+                type="text"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
             />
             <button type="submit">Add User</button>
             {Message && <p>{Message}</p>}
